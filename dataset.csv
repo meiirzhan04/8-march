@@ -1,0 +1,11 @@
+ghsa_id,ecosystem,source_code_location,vulnerable_version_old,vulnerable_version_new,patched_version_old,patched_version_new,old_vuln_patched,new_vuln_patch,oldvuln_newpatch
+GHSA-7pq5-qcp6-mcww,pip,https://github.com/ckan/ckan,< 2.10.7,">= 2.11.0, < 2.11.2",2.10.7,2.11.2,,,
+GHSA-placeholder-1,npm,https://github.com/example/repo1,< 1.0.0,,1.0.0,,,,
+GHSA-placeholder-2,pip,https://github.com/example/repo2,< 3.2.1,,3.2.1,,,,
+GHSA-placeholder-3,maven,https://github.com/example/repo3,< 4.5.0,,4.5.0,,,,
+GHSA-placeholder-4,pip,https://github.com/example/repo4,< 0.9.9,,0.9.9,,,,
+GHSA-placeholder-5,go,https://github.com/example/repo5,< 2.0.1,,2.0.1,,,,
+GHSA-placeholder-6,npm,https://github.com/example/repo6,< 3.0.0,,3.0.0,,,,
+GHSA-placeholder-7,pip,https://github.com/example/repo7,< 1.4.2,,1.4.2,,,,
+GHSA-placeholder-8,rubygems,https://github.com/example/repo8,< 5.1.0,,5.1.0,,,,
+GHSA-placeholder-9,maven,https://github.com/example/repo9,< 7.0.0,,7.0.0,,,,

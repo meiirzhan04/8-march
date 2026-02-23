@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Наурыз - Шақыру</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe6f2; /* Нәзік қызғылт фон */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #d81b60;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            padding: 0 15px;
+        }
+        p {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        .gif-container img {
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap; /* Үлкейгенде сыюы үшін */
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease; /* Бірқалыпты үлкеюі үшін */
+        }
+        .btn-yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .btn-yes:hover {
+            background-color: #e91e63;
+        }
+        .btn-no {
+            background-color: #fff;
+            color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gif-container">
+            <img id="mainGif" src="https://media.tenor.com/tU2oEw0kC_0AAAAi/bear-flowers.gif" alt="Гүл ұстаған қонжық">
+        </div>
+        <h1 id="title">Құрметті біздің арулар! 🌷</h1>
+        <p id="question">Бізбен бірге 8 Наурыз мерекесін атап өтуге келесіздер ме?</p>
+
+        <div class="buttons">
+            <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине! 🌸</button>
+            <button class="btn-no" id="noBtn" onclick="handleNoClick()">Жоқ 🙈</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        // "Жоқ" батырмасын басқан кезде шығатын сөздер
+        const noTexts = [
+            "Жоқ 🙈",
+            "Сенімдісіз бе? 🥺",
+            "Тағы ойланыңызшы? 🤔",
+            "Біз ренжиміз ғой 💔",
+            "Қойшы енді! 😭",
+            "Келіңіздерші, өтініш! 🙏",
+            "Басқа амалыңыз жоқ! 😈"
+        ];
+
+        let noClickCount = 0;
+        let yesFontSize = 1.2; // Бастапқы шрифт өлшемі
+        let yesPadding = 12;   // Бастапқы padding
+
+        function handleNoClick() {
+            noClickCount++;
+
+            // "Жоқ" батырмасының сөзін өзгерту
+            if (noClickCount < noTexts.length) {
+                noBtn.innerText = noTexts[noClickCount];
+            } else {
+                noBtn.innerText = noTexts[noTexts.length - 1]; // Соңғы сөзде қатып қалады
+            }
+
+            // "Әрине" батырмасын үлкейту
+            yesFontSize += 0.8; // Шрифтті үлкейтеміз
+            yesPadding += 10;   // Батырманың өзін үлкейтеміз
+
+            yesBtn.style.fontSize = yesFontSize + 'rem';
+            yesBtn.style.padding = yesPadding + 'px ' + (yesPadding * 2) + 'px';
+        }
+
+        function acceptInvite() {
+            // Келіскен кездегі реакция
+            document.getElementById('mainGif').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
+            document.getElementById('title').innerHTML = "Ура! Асыға күтеміз! 🎉";
+            document.getElementById('question').innerHTML = "Күні: 7 Наурыз | Уақыты: 18:00<br>Қайда баратынымызды топқа жазамыз! ✨";
+
+            // Батырмаларды алып тастау
+            document.querySelector('.buttons').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

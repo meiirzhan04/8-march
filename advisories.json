@@ -1,0 +1,170 @@
+[
+  {
+    "_id": "GHSA-7pq5-qcp6-mcww",
+    "ghsa_id": "GHSA-7pq5-qcp6-mcww",
+    "cve_id": "CVE-2025-24372",
+    "source_code_location": "https://github.com/ckan/ckan",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "ckan"
+        },
+        "vulnerable_version_range": "< 2.10.7",
+        "first_patched_version": "2.10.7"
+      },
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "ckan"
+        },
+        "vulnerable_version_range": ">= 2.11.0, < 2.11.2",
+        "first_patched_version": "2.11.2"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-1",
+    "ghsa_id": "GHSA-placeholder-1",
+    "source_code_location": "https://github.com/example/repo1",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "lib1"
+        },
+        "vulnerable_version_range": "< 1.0.0",
+        "first_patched_version": "1.0.0"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-2",
+    "ghsa_id": "GHSA-placeholder-2",
+    "source_code_location": "https://github.com/example/repo2",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "lib2"
+        },
+        "vulnerable_version_range": "< 3.2.1",
+        "first_patched_version": "3.2.1"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-3",
+    "ghsa_id": "GHSA-placeholder-3",
+    "source_code_location": "https://github.com/example/repo3",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "lib3"
+        },
+        "vulnerable_version_range": "< 4.5.0",
+        "first_patched_version": "4.5.0"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-4",
+    "ghsa_id": "GHSA-placeholder-4",
+    "source_code_location": "https://github.com/example/repo4",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "lib4"
+        },
+        "vulnerable_version_range": "< 0.9.9",
+        "first_patched_version": "0.9.9"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-5",
+    "ghsa_id": "GHSA-placeholder-5",
+    "source_code_location": "https://github.com/example/repo5",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "go",
+          "name": "lib5"
+        },
+        "vulnerable_version_range": "< 2.0.1",
+        "first_patched_version": "2.0.1"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-6",
+    "ghsa_id": "GHSA-placeholder-6",
+    "source_code_location": "https://github.com/example/repo6",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "lib6"
+        },
+        "vulnerable_version_range": "< 3.0.0",
+        "first_patched_version": "3.0.0"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-7",
+    "ghsa_id": "GHSA-placeholder-7",
+    "source_code_location": "https://github.com/example/repo7",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "lib7"
+        },
+        "vulnerable_version_range": "< 1.4.2",
+        "first_patched_version": "1.4.2"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-8",
+    "ghsa_id": "GHSA-placeholder-8",
+    "source_code_location": "https://github.com/example/repo8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "rubygems",
+          "name": "lib8"
+        },
+        "vulnerable_version_range": "< 5.1.0",
+        "first_patched_version": "5.1.0"
+      }
+    ]
+  },
+
+  {
+    "_id": "GHSA-placeholder-9",
+    "ghsa_id": "GHSA-placeholder-9",
+    "source_code_location": "https://github.com/example/repo9",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "lib9"
+        },
+        "vulnerable_version_range": "< 7.0.0",
+        "first_patched_version": "7.0.0"
+      }
+    ]
+  }
+]
