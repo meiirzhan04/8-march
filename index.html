@@ -3,86 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8 Наурыз - Шақыру</title>
+    <title>8 Наурыз & Рамазан - Шақыру</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #ffe6f2; /* Нәзік қызғылт фон */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            /* Красивый весенний градиентный фон */
+            background: linear-gradient(-45deg, #ffb6c1, #ffc0cb, #f8c8d8, #e6e6fa);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Montserrat', sans-serif;
             text-align: center;
             margin: 0;
             overflow: hidden;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .container {
+            /* Эффект матового стекла */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 40px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 450px;
             position: relative;
             z-index: 10;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         h1 {
             color: #d81b60;
             margin-bottom: 10px;
-            font-size: 2.2rem;
-            padding: 0 15px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
+
         p {
-            color: #555;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            padding: 0 15px;
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
+
         .gif-container img {
-            width: 250px;
+            width: 220px;
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
+
         .buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             align-items: center;
-            flex-wrap: wrap; /* Үлкейгенде сыюы үшін */
+            flex-wrap: wrap;
+            min-height: 80px;
         }
+
         button {
-            padding: 12px 25px;
-            font-size: 1.2rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             border: none;
-            border-radius: 15px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
             outline: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease; /* Бірқалыпты үлкеюі үшін */
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
+
         .btn-yes {
-            background-color: #ff4081;
+            background: linear-gradient(45deg, #ff4081, #d81b60);
             color: white;
         }
+
         .btn-yes:hover {
-            background-color: #e91e63;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
         }
+
         .btn-no {
             background-color: #fff;
             color: #d81b60;
         }
+
+        /* Плавающие иконки на фоне для красоты */
+        .decor {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        .d1 { top: 10%; left: 10%; animation: float 3s ease-in-out infinite; }
+        .d2 { top: 20%; right: 15%; animation: float 4s ease-in-out infinite; font-size: 3rem;}
+        .d3 { bottom: 15%; left: 15%; animation: float 3.5s ease-in-out infinite; font-size: 2.5rem;}
+        .d4 { bottom: 10%; right: 10%; animation: float 4.5s ease-in-out infinite; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 <body>
+    <div class="decor d1">🌸</div>
+    <div class="decor d2">🌙</div>
+    <div class="decor d3">🌷</div>
+    <div class="decor d4">✨</div>
+
     <div class="container">
         <div class="gif-container">
             <img id="mainGif" src="https://media.tenor.com/tU2oEw0kC_0AAAAi/bear-flowers.gif" alt="Гүл ұстаған қонжық">
         </div>
-        <h1 id="title">Құрметті біздің арулар! 🌷</h1>
-        <p id="question">Бізбен бірге 8 Наурыз мерекесін атап өтуге келесіздер ме?</p>
+        <h1 id="title">Құрметті арулар! 🌸🌙</h1>
+        <p id="question">
+            Биылғы көктемнің ең әдемі мерекесі — 8 Наурыз қасиетті Рамазан айымен тұспа-тұс келіп отыр. <br><br>
+            Осы қос мерекеге орай ұйымдастырылатын <b>мерекелік Ауызашардың</b> қадірлі қонағы болыңыздар! Келесіздер ме? ✨
+        </p>
 
         <div class="buttons">
-            <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине! 🌸</button>
+            <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине! 💖</button>
             <button class="btn-no" id="noBtn" onclick="handleNoClick()">Жоқ 🙈</button>
         </div>
     </div>
@@ -91,46 +150,42 @@
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
 
-        // "Жоқ" батырмасын басқан кезде шығатын сөздер
+        // "Жоқ" батырмасын басқан кезде шығатын сөздер (Рамазанға сай)
         const noTexts = [
             "Жоқ 🙈",
             "Сенімдісіз бе? 🥺",
-            "Тағы ойланыңызшы? 🤔",
-            "Біз ренжиміз ғой 💔",
-            "Қойшы енді! 😭",
+            "Ауызашар ғой, қалай жоқ? 🌙",
+            "Біз қатты ренжиміз 💔",
+            "Қойшы енді, қыздар! 😭",
             "Келіңіздерші, өтініш! 🙏",
             "Басқа амалыңыз жоқ! 😈"
         ];
 
         let noClickCount = 0;
-        let yesFontSize = 1.2; // Бастапқы шрифт өлшемі
-        let yesPadding = 12;   // Бастапқы padding
+        let yesFontSize = 1.1;
+        let yesPadding = 15;
 
         function handleNoClick() {
             noClickCount++;
 
-            // "Жоқ" батырмасының сөзін өзгерту
             if (noClickCount < noTexts.length) {
                 noBtn.innerText = noTexts[noClickCount];
             } else {
-                noBtn.innerText = noTexts[noTexts.length - 1]; // Соңғы сөзде қатып қалады
+                noBtn.innerText = noTexts[noTexts.length - 1];
             }
 
-            // "Әрине" батырмасын үлкейту
-            yesFontSize += 0.8; // Шрифтті үлкейтеміз
-            yesPadding += 10;   // Батырманың өзін үлкейтеміз
+            yesFontSize += 0.5;
+            yesPadding += 8;
 
             yesBtn.style.fontSize = yesFontSize + 'rem';
             yesBtn.style.padding = yesPadding + 'px ' + (yesPadding * 2) + 'px';
         }
 
         function acceptInvite() {
-            // Келіскен кездегі реакция
             document.getElementById('mainGif').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
             document.getElementById('title').innerHTML = "Ура! Асыға күтеміз! 🎉";
-            document.getElementById('question').innerHTML = "Күні: 7 Наурыз | Уақыты: 18:00<br>Қайда баратынымызды топқа жазамыз! ✨";
+            document.getElementById('question').innerHTML = "<b>Күні:</b> 7 Наурыз <br><b>Уақыты:</b> Ауызашар уақытында 🌙<br><br>Қайда баратынымызды топқа жазамыз. Ораза қабыл болсын! ✨";
 
-            // Батырмаларды алып тастау
             document.querySelector('.buttons').style.display = 'none';
         }
     </script>
