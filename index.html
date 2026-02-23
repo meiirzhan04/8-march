@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>8 Наурыз & Рамазан - Шақыру</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
@@ -16,9 +16,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(-45deg, #1A0B2E, #4B1D52, #962E5B, #FF7B89);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            background: linear-gradient(-45deg, #2c1635, #4B1D52, #8b2853, #d96272);
+            background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite;
             font-family: 'Montserrat', sans-serif;
             color: white;
             overflow: hidden;
@@ -37,60 +37,50 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            animation: float 4s ease-in-out infinite;
+            padding: 15px;
             width: 100%;
-            max-width: 500px;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            max-width: 450px;
         }
 
         .gif-container img {
-            width: 220px;
+            width: 180px;
             border-radius: 50%;
-            box-shadow: 0 0 30px rgba(255, 123, 137, 0.6);
-            margin-bottom: 20px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 123, 137, 0.4);
+            margin-bottom: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 900;
+            font-size: 1.8rem;
+            font-weight: 800;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px #FF7B89;
-            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 123, 137, 0.8);
         }
 
         p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            padding: 0 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-weight: 600;
+            padding: 0 10px;
         }
 
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
-            position: relative;
             width: 100%;
-            min-height: 80px;
+            min-height: 60px;
         }
 
         button {
-            padding: 15px 35px;
-            font-size: 1.1rem;
+            padding: 12px 25px;
+            font-size: 1rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
-            font-weight: 900;
+            font-weight: 800;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             white-space: nowrap;
@@ -99,23 +89,68 @@
         .btn-yes {
             background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
             color: #000;
-            box-shadow: 0 0 20px rgba(146, 254, 157, 0.6);
             z-index: 100;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-yes:hover {
-            box-shadow: 0 0 40px rgba(146, 254, 157, 1);
+            transition: transform 0.3s ease;
         }
 
         .btn-no {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(5px);
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
             z-index: 150;
-            /* Экранда бірқалыпты жүзуі үшін */
             transition: left 0.4s ease-out, top 0.4s ease-out;
+        }
+
+        /* Форма стилі */
+        #formContainer {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 20px;
+            width: 80%;
+            text-align: left;
+        }
+
+        .radio-group label {
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, #ff4081, #d81b60);
+            color: white;
+            margin-top: 10px;
+            width: 80%;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
         }
 
         .particle {
@@ -130,10 +165,11 @@
             to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        @media (max-width: 400px) {
-            h1 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-            .buttons { flex-direction: column; gap: 20px; }
+        @media (max-width: 450px) {
+            h1 { font-size: 1.4rem; }
+            p { font-size: 0.9rem; }
+            button { padding: 10px 20px; font-size: 0.9rem; }
+            .gif-container img { width: 150px; }
         }
     </style>
 </head>
@@ -144,30 +180,40 @@
             <img id="mainGif" src="https://media.tenor.com/tU2oEw0kC_0AAAAi/bear-flowers.gif" alt="Гүл ұстаған қонжық">
         </div>
         <h1 id="title">Құрметті арулар! 🌸🌙</h1>
-        <p id="question">
+        <p id="question" style="display: block;">
             Биылғы көктемнің ең әдемі мерекесі — 8 Наурыз қасиетті Рамазан айымен тұспа-тұс келіп отыр. <br><br>
-            Осы қос мерекеге орай ұйымдастырылатын <b>мерекелік Ауызашардың</b> қадірлі қонағы болыңыздар! Келесіздер ме? ✨
+            Осы қос мерекеге орай ұйымдастырылатын <b>28 ақпандағы мерекелік Ауызашардың</b> қадірлі қонағы болыңыздар! Келесіздер ме? ✨
         </p>
 
         <div class="buttons">
             <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине! 💖</button>
             <button class="btn-no" id="noBtn" onclick="handleNoClick()">Жоқ 🙈</button>
         </div>
+
+        <div id="formContainer">
+            <input type="text" id="guestName" placeholder="Атыңызды жазыңыз..." required>
+
+            <div class="radio-group">
+                <label><input type="radio" name="attendance" value="Келемін" checked> Келемін 🌸</label>
+                <label><input type="radio" name="attendance" value="Келе алмаймын"> Келе алмаймын 😔</label>
+            </div>
+
+            <button class="btn-submit" onclick="sendData()">Жауапты жіберу ✉️</button>
+        </div>
     </div>
 
     <script>
-        // Артқы фондағы бөлшектерді жасау
         function createParticles() {
-            const symbols = ['🌸', '🌙', '✨', '🌷'];
-            const particleCount = 20;
+            const symbols = ['🌸', '🌙', '✨'];
+            const particleCount = 10;
             for (let i = 0; i < particleCount; i++) {
                 let particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
                 particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                particle.style.animationDelay = (Math.random() * 5) + 's';
+                particle.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particle.style.animationDelay = (Math.random() * 3) + 's';
                 document.body.appendChild(particle);
             }
         }
@@ -176,108 +222,105 @@
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
 
-        const noTexts = [
-            "Сенімдісіз бе? 🥺",
-            "Ауызашар ғой! 🌙",
-            "Енді ұстап көріңіз! 🐟"
-        ];
-
+        const noTexts = ["Сенімдісіз бе? 🥺", "Ауызашар ғой! 🌙", "Енді ұстап көріңіз! 🐟"];
         let noClickCount = 0;
         let scaleFactor = 1;
         let isSwimming = false;
 
         function handleNoClick() {
             if (isSwimming) return;
-
             noClickCount++;
-
             if (noClickCount <= noTexts.length) {
                 noBtn.innerText = noTexts[noClickCount - 1];
             }
-
-            // "Әрине" батырмасын үлкейту
-            scaleFactor += 0.4;
+            scaleFactor += 0.3;
             yesBtn.style.transform = `scale(${scaleFactor})`;
 
-            // 3-ші рет басқанда - экран сыртына ұшып кетпеуі үшін оны денеге (body) тіркейміз
             if (noClickCount >= 3) {
                 isSwimming = true;
-
-                // Батырманың қазіргі орнын анықтап аламыз
                 const rect = noBtn.getBoundingClientRect();
-
-                // Оны негізгі экранға шығарамыз
                 document.body.appendChild(noBtn);
                 noBtn.style.position = 'fixed';
                 noBtn.style.left = rect.left + 'px';
                 noBtn.style.top = rect.top + 'px';
-
-                // Сәл кідіріспен қаша бастайды
-                setTimeout(() => {
-                    swimAway();
-                }, 100);
+                setTimeout(() => { swimAway(); }, 100);
             }
         }
 
-        // Батырманың экран ішінде ғана жүзу функциясы
         function swimAway() {
             if (!isSwimming) return;
-
-            // Экранның қауіпсіз шекарасын есептейміз (батырма экраннан шығып кетпес үшін)
             const maxX = window.innerWidth - noBtn.offsetWidth - 20;
             const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-
             const randomX = Math.max(10, Math.floor(Math.random() * maxX));
             const randomY = Math.max(10, Math.floor(Math.random() * maxY));
-
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
 
-        // Тінтуір жақындағанда немесе телефонда басуға тырысқанда қашады
         noBtn.addEventListener('mouseover', swimAway);
         noBtn.addEventListener('touchstart', function(e) {
-            if (isSwimming) {
-                e.preventDefault();
-                swimAway();
-            }
+            if (isSwimming) { e.preventDefault(); swimAway(); }
         });
 
         function acceptInvite() {
             document.getElementById('mainGif').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
-            document.getElementById('title').innerHTML = "Ура! Асыға күтеміз! 🎉";
-            document.getElementById('question').innerHTML = "<b>Күні:</b> 7 Наурыз <br><b>Уақыты:</b> Ауызашар уақытында 🌙<br><br>Қайда баратынымызды топқа жазамыз. Ораза қабыл болсын! ✨";
+            document.getElementById('title').innerHTML = "Тамаша! 🎉";
+            document.getElementById('question').innerHTML = "<b>28 ақпан</b> күні күтеміз! Төмендегі мәліметтерді толтырып жіберіңізші: ✨";
 
-            // Екі батырманы да жасырамыз
             document.querySelector('.buttons').style.display = 'none';
             if(noBtn) noBtn.style.display = 'none';
-
+            document.getElementById('formContainer').style.display = 'flex';
             fireConfetti();
         }
 
+        // ПОЧТАҒА ЖІБЕРУ ФУНКЦИЯСЫ
+        function sendData() {
+            const name = document.getElementById('guestName').value.trim();
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+
+            // === ОСЫ ЖЕРГЕ ӨЗ GMAIL-ІҢДІ ЖАЗ ===
+            const myEmail = "amirzhanmeirzhan5@gmail.com";
+
+            if (name === "") {
+                alert("Өтініш, атыңызды жазыңыз! 🌸");
+                return;
+            }
+
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.innerText = "Жіберілуде... ⏳";
+            submitBtn.disabled = true;
+
+            fetch(`https://formsubmit.co/ajax/${myEmail}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "Тақырып": "8 Наурыз Ауызашар - Жаңа жауап!",
+                    "Қонақтың аты": name,
+                    "Келе ме?": attendance
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Жауабыңыз қабылданды! Рақмет! 🌸");
+                submitBtn.innerText = "Жіберілді ✅";
+            })
+            .catch(error => {
+                alert("Қате шықты. Қайта көріңізші.");
+                submitBtn.innerText = "Жауапты жіберу ✉️";
+                submitBtn.disabled = false;
+            });
+        }
+
         function fireConfetti() {
-            var duration = 4 * 1000;
+            var duration = 3 * 1000;
             var end = Date.now() + duration;
-
             (function frame() {
-                confetti({
-                    particleCount: 7,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#00C9FF', '#92FE9D', '#FF7B89']
-                });
-                confetti({
-                    particleCount: 7,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#00C9FF', '#92FE9D', '#FF7B89']
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#00C9FF', '#92FE9D', '#FF7B89'] });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#00C9FF', '#92FE9D', '#FF7B89'] });
+                if (Date.now() < end) requestAnimationFrame(frame);
             }());
         }
     </script>
