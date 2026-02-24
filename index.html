@@ -89,7 +89,7 @@
             text-align: center; width: 320px; border: 2px solid rgba(255, 255, 255, 0.2);
         }
         .modal-title { color: #92FE9D; font-size: 1.8rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 800;}
-        .custom-modal-box p { font-family: 'Inter', sans-serif; color: #eee; margin-bottom: 20px;}
+        .custom-modal-box p { font-family: 'Inter', sans-serif; color: #eee; margin-bottom: 20px; line-height: 1.5;}
 
         /* 2GIS БАТЫРМАСЫ ДИАЛОГТАҒЫ */
         .location-btn {
@@ -104,6 +104,8 @@
             font-weight: 600;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         .location-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
 
@@ -167,7 +169,7 @@
         <div class="custom-modal-box">
             <span style="font-size: 4rem;">🎉</span>
             <h2 class="modal-title">Рақмет!</h2>
-            <p>Жауабыңыз сәтті жіберілді. <br>Керемет кеште жолыққанша! ✨</p>
+            <p>Жауабыңыз сәтті қабылданды. <br><b>28 ақпан, сағат 17:00-де</b> сізді асыға күтеміз! ✨</p>
             <a href="https://2gis.kz/almaty/geo/70030076202122751" target="_blank" class="location-btn">📍 Мекенжайды ашу (2GIS)</a>
         </div>
     </div>
@@ -213,7 +215,7 @@
         function showSnackbar(message, isError = true) {
             const snackbar = document.getElementById("snackbar");
             snackbar.innerText = message;
-            snackbar.style.backgroundColor = isError ? "#ff4d4d" : "#92FE9D"; // Қате болса қызыл, сәтті болса жасыл
+            snackbar.style.backgroundColor = isError ? "#ff4d4d" : "#92FE9D";
             snackbar.style.color = isError ? "#fff" : "#000";
 
             snackbar.classList.add("show");
@@ -255,11 +257,10 @@
                 avatarImg.src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
             }
 
-            // МӘТІНГЕ 2GIS СІЛТЕМЕСІ ҚОСЫЛДЫ
+            // Мұнда тек мәтін, уақыт пен форма қалады. Мекенжай жасырын.
             document.getElementById('question').innerHTML = `
-                <b>28 ақпан</b> күні асыға күтеміз! <br><br>
-                📍 <b>Мекенжай:</b> <a href="https://2gis.kz/almaty/geo/70030076202122751" target="_blank" style="color: #92FE9D; text-decoration: none; border-bottom: 1px dashed #92FE9D;">Картадан ашу</a> <br><br>
-                Төмендегі жауапты растаңыз: ✨
+                <b>28 ақпан, сағат 17:00-де</b> сізді асыға күтеміз! ✨ <br><br>
+                Төмендегі жауапты растаңыз:
             `;
 
             document.querySelector('.buttons').style.display = 'none';
@@ -276,8 +277,8 @@
             const myEmail = "amirzhanmeirzhan5@gmail.com";
 
             if (!name) {
-                nameInput.style.borderColor = "#ff4d4d"; // Қате болса input қызарады
-                showSnackbar("Өтініш, атыңызды жазыңыз! 🌸", true); // Alert орнына Snackbar
+                nameInput.style.borderColor = "#ff4d4d";
+                showSnackbar("Өтініш, атыңызды жазыңыз! 🌸", true);
                 return;
             }
 
@@ -289,6 +290,7 @@
                 body: JSON.stringify({"Қонақ": name, "Шешімі": attendance})
             })
             .then(() => {
+                // Мекенжай мен уақыт тек осы жерде ашылады!
                 document.getElementById('successModal').classList.add('active');
                 document.body.classList.add('modal-open');
             })
