@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>8 Наурыз - Шақыру</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
@@ -38,38 +38,47 @@
             width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
             box-shadow: 0 0 25px rgba(255, 123, 137, 0.5);
             margin-bottom: 25px; border: 3px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255,255,255,0.1);
         }
 
         h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 0 15px rgba(255, 123, 137, 0.9); }
         p { font-size: 1rem; line-height: 1.6; margin-bottom: 35px; font-weight: 600; }
 
         .buttons { display: flex; justify-content: center; gap: 15px; width: 100%; min-height: 60px; }
+
+        /* Батырмаларға арнайы Inter шрифті қойылды */
         button {
-            padding: 14px 28px; font-size: 1rem; border: none; border-radius: 30px;
+            padding: 14px 28px; font-size: 1.05rem; border: none; border-radius: 30px;
             cursor: pointer; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif; letter-spacing: 0.5px;
         }
 
-        .btn-yes { background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); color: #000; }
-        .btn-no { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); color: white; border: 1.5px solid rgba(255,255,255,0.5); }
+        .btn-yes { background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); color: #000; z-index: 100; }
+        .btn-no { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); color: white; border: 1.5px solid rgba(255,255,255,0.5); z-index: 20; }
 
         #formContainer { display: none; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-top: 20px; }
+
+        /* Форма мәтіндеріне де Inter шрифті қойылды */
         input[type="text"] {
-            width: 100%; box-sizing: border-box; padding: 16px 20px; font-size: 1rem;
+            width: 100%; box-sizing: border-box; padding: 16px 20px; font-size: 1.05rem;
             border-radius: 20px; border: 2px solid rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-            color: white; text-align: center;
+            color: white; text-align: center; font-family: 'Inter', sans-serif; font-weight: 600;
         }
+        input[type="text"]::placeholder { color: rgba(255,255,255,0.8); }
 
         .radio-group { display: flex; flex-direction: column; gap: 10px; width: 100%; }
         .radio-label {
             display: flex; align-items: center; gap: 12px; padding: 14px 18px;
             border: 2px solid rgba(255,255,255,0.3); border-radius: 20px;
             background: rgba(255,255,255,0.2); font-weight: 600; cursor: pointer;
+            font-family: 'Inter', sans-serif;
         }
         .radio-label:has(input:checked) { border-color: #92FE9D; background: rgba(146, 254, 157, 0.2); color: #92FE9D; }
 
         .btn-submit { background: linear-gradient(90deg, #FF512F 0%, #DD2476 100%); color: white; width: 100%; margin-top: 10px;}
 
+        /* ДИАЛОГ ТЕРЕЗЕСІ */
         .custom-modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);
@@ -80,7 +89,8 @@
             background: rgba(40, 20, 60, 0.95); padding: 40px 30px; border-radius: 30px;
             text-align: center; width: 320px; border: 2px solid rgba(255, 255, 255, 0.2);
         }
-        .modal-title { color: #92FE9D; font-size: 1.8rem; margin-bottom: 10px; }
+        .modal-title { color: #92FE9D; font-size: 1.8rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 800;}
+        .custom-modal-box p { font-family: 'Inter', sans-serif; color: #eee; }
     </style>
 </head>
 <body>
@@ -119,18 +129,19 @@
     </div>
 
     <script>
-        // 1. ТІЗІМДЕГІ ҮТІРЛЕРДІ ТҮЗЕТТІК
         const girlsCollection = {
-            "c3d4kayaulym": { name: "Аяулым", photo: "photo_2025-12-14_20-57-24.jpg" },
+            "c3d4kayaulym": { name: "Аяулым", photo: "kayaulym.png" },
             "c5d6zayaulym": { name: "Аяулым", photo: "zayaulym.jpg" },
-            "c7d8aigerim": { name: "Әйгерім", photo: "aigerim.jpg" },
+            "c7d8aigerim": { name: "Айгерім", photo: "aigerim.png" },
             "c9d10nazerke": { name: "Назерке", photo: "nazerke.jpg" },
             "c11d12kamila": { name: "Камила", photo: "kamila.jpg" },
             "c13d14aruzhan": { name: "Аружан", photo: "aruzhan.jpg" },
             "c15d16mira": { name: "Мира", photo: "mira.jpg" },
             "c17d18elvina": { name: "Эльвина", photo: "elvina.jpg" },
             "c19d20tomiris": { name: "Томирис", photo: "tomiris.jpg" },
-            "c21d22kunsulu": { name: "Күнсұлу", photo: "kunsulu.jpg" }
+            "c21d22kunsulu": { name: "Күнсұлу", photo: "kusulu.jpg" },
+            "c23d24kareema": { name: "Карима", photo: "kareema.jpg" },
+            "c25d26aselai": { name: "Әселай", photo: "aselai.png" },
         };
 
         const avatarImg = document.getElementById('girlAvatar');
@@ -141,7 +152,6 @@
         const params = new URLSearchParams(window.location.search);
         const girlId = params.get('id');
 
-        // Егер ID табылса, мәліметті ауыстырамыз
         if (girlId && girlsCollection[girlId]) {
             const g = girlsCollection[girlId];
             avatarImg.src = g.photo;
@@ -184,8 +194,10 @@
         noBtn.addEventListener('touchstart', (e) => { if(isSwimming) { e.preventDefault(); swimAway(); }});
 
         function acceptInvite() {
-            // "Иә" басқанда арудың суреті қуанышты гифке ауысады
-            document.getElementById('girlAvatar').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
+            if (avatarImg.src.includes("bear-flowers.gif")) {
+                avatarImg.src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
+            }
+
             document.getElementById('question').innerHTML = "<b>28 ақпан</b> күні күтеміз! <br>Жауабыңызды растаңыз: ✨";
             document.querySelector('.buttons').style.display = 'none';
             if(noBtn) noBtn.style.display = 'none';
