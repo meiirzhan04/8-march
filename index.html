@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>8 Наурыз & Рамазан - Шақыру</title>
+    <title>8 Наурыз - Шақыру</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* КОСМОСТЫҚ ДИЗАЙН СТИЛЬДЕРІ */
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* Күңгірт градиентті фон */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             background: linear-gradient(-45deg, #2c1635, #4B1D52, #8b2853, #d96272);
             background-size: 200% 200%;
             animation: gradientBG 10s ease infinite;
             font-family: 'Montserrat', sans-serif;
-            color: white;
-            overflow: hidden;
-            text-align: center;
+            color: white; overflow: hidden; text-align: center;
         }
 
         @keyframes gradientBG {
@@ -34,315 +26,129 @@
         }
 
         .content-wrapper {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 90%;
-            max-width: 450px;
-            transition: opacity 0.5s ease;
+            position: relative; z-index: 10;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 20px; width: 90%; max-width: 450px;
+            transition: all 0.5s ease;
         }
 
-        body.modal-open .content-wrapper {
-            filter: blur(5px);
-            opacity: 0.3;
-            pointer-events: none;
-        }
+        body.modal-open .content-wrapper { filter: blur(8px); opacity: 0.2; pointer-events: none; }
 
         .gif-container img {
-            width: 180px;
-            border-radius: 50%;
+            width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
             box-shadow: 0 0 25px rgba(255, 123, 137, 0.5);
-            margin-bottom: 25px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 25px; border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 123, 137, 0.9);
-        }
+        h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 0 15px rgba(255, 123, 137, 0.9); }
+        p { font-size: 1rem; line-height: 1.6; margin-bottom: 35px; font-weight: 600; }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            font-weight: 600;
-            padding: 0 10px;
-        }
-
-        b { color: #ff9db3; }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            align-items: center;
-            width: 100%;
-            min-height: 60px;
-        }
-
+        .buttons { display: flex; justify-content: center; gap: 15px; width: 100%; min-height: 60px; }
         button {
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            white-space: nowrap;
+            padding: 14px 28px; font-size: 1rem; border: none; border-radius: 30px;
+            cursor: pointer; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease;
         }
 
-        /* Неон батырмалар */
-        .btn-yes {
-            background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
-            color: #000;
-            box-shadow: 0 0 20px rgba(146, 254, 157, 0.4);
-            z-index: 10;
-            transition: transform 0.3s ease;
-        }
+        .btn-yes { background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); color: #000; }
+        .btn-no { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); color: white; border: 1.5px solid rgba(255,255,255,0.5); }
 
-        .btn-no {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            color: white;
-            border: 1.5px solid rgba(255,255,255,0.5);
-            z-index: 20;
-            will-change: transform;
-        }
-
-        /* Форма стилі */
-        #formContainer {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
+        #formContainer { display: none; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-top: 20px; }
         input[type="text"] {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 16px 20px;
-            font-size: 1.1rem;
-            border-radius: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            outline: none;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-align: center;
-            color: white;
-            transition: all 0.3s;
+            width: 100%; box-sizing: border-box; padding: 16px 20px; font-size: 1rem;
+            border-radius: 20px; border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+            color: white; text-align: center;
         }
 
-        input[type="text"]::placeholder { color: rgba(255,255,255,0.7); }
-        input[type="text"]:focus {
-            border-color: #00C9FF;
-            background: rgba(255,255,255,0.3);
-        }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-        }
-
+        .radio-group { display: flex; flex-direction: column; gap: 10px; width: 100%; }
         .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: white;
+            display: flex; align-items: center; gap: 12px; padding: 14px 18px;
+            border: 2px solid rgba(255,255,255,0.3); border-radius: 20px;
+            background: rgba(255,255,255,0.2); font-weight: 600; cursor: pointer;
         }
+        .radio-label:has(input:checked) { border-color: #92FE9D; background: rgba(146, 254, 157, 0.2); color: #92FE9D; }
 
-        .radio-label:has(input:checked) {
-            border-color: #92FE9D;
-            background: rgba(146, 254, 157, 0.2);
-            color: #92FE9D;
-            box-shadow: 0 0 15px rgba(146, 254, 157, 0.3);
-        }
+        .btn-submit { background: linear-gradient(90deg, #FF512F 0%, #DD2476 100%); color: white; width: 100%; margin-top: 10px;}
 
-        input[type="radio"] {
-            accent-color: #92FE9D;
-            width: 20px;
-            height: 20px;
-        }
-
-        .btn-submit {
-            background: linear-gradient(90deg, #FF512F 0%, #DD2476 100%);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            box-shadow: 0 0 25px rgba(221, 36, 118, 0.4);
-        }
-
-        .btn-submit:disabled {
-            background: #555;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-
-        /* ЖАҢА ӘДЕМІ ДИАЛОГ (MODAL) СТИЛІ */
         .custom-modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
         }
-
-        .custom-modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
+        .custom-modal-overlay.active { display: flex; }
         .custom-modal-box {
-            background: rgba(40, 20, 60, 0.9); /* Күңгірт шыны эффект */
-            padding: 40px 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            max-width: 85%;
-            width: 380px;
-            transform: scale(0.8);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: white;
+            background: rgba(40, 20, 60, 0.95); padding: 40px 30px; border-radius: 30px;
+            text-align: center; width: 320px; border: 2px solid rgba(255, 255, 255, 0.2);
         }
-
-        .custom-modal-overlay.active .custom-modal-box {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .modal-icon { font-size: 4rem; margin-bottom: 20px; display: block; }
-        .modal-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            color: #92FE9D;
-            margin: 0 0 10px 0;
-            text-shadow: 0 0 10px rgba(146, 254, 157, 0.6);
-        }
-        .modal-text {
-            font-size: 1.1rem;
-            color: #ddd;
-            line-height: 1.5;
-            margin-bottom: 0;
-            font-weight: 600;
-        }
-
-        /* Ұшып жүретін бөлшектер */
-        .particle {
-            position: absolute;
-            top: -10%;
-            pointer-events: none;
-            z-index: 1;
-            animation: fall linear infinite;
-            opacity: 0.7;
-        }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-
-        @media (max-width: 400px) {
-            h1 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-            .content-wrapper { padding: 15px; }
-            button { padding: 12px 24px; font-size: 1rem; }
-            .custom-modal-box { padding: 30px 20px; }
-        }
+        .modal-title { color: #92FE9D; font-size: 1.8rem; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <div class="content-wrapper">
         <div class="gif-container">
-            <img id="mainGif" src="https://media.tenor.com/tU2oEw0kC_0AAAAi/bear-flowers.gif" alt="Гүл ұстаған қонжық">
+            <img id="girlAvatar" src="https://media.tenor.com/tU2oEw0kC_0AAAAi/bear-flowers.gif" alt="Avatar">
         </div>
-        <h1 id="title">Құрметті арулар! 🌸🌙</h1>
+        <h1 id="title">Құрметті арулар!</h1>
         <p id="question">
             Көктемнің ең әдемі мерекесі — 8 Наурыз қасиетті Рамазан айымен тұспа-тұс келіп отыр. <br><br>
-            Осы қос мерекеге орай ұйымдастырылатын <b>28 ақпандағы мерекелік Ауызашардың</b> қадірлі қонағы болыңыздар! Келесіздер ме? ✨
+            Осы орайда ұйымдастырылатын <b>28 ақпандағы мерекелік Ауызашардың</b> қадірлі қонағы болыңыздар! Келесіздер ме?
         </p>
 
         <div class="buttons">
-            <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине, келемін! 💖</button>
+            <button class="btn-yes" id="yesBtn" onclick="acceptInvite()">Әрине! 💖</button>
             <button class="btn-no" id="noBtn" onclick="handleNoClick()">Жоқ 🙈</button>
         </div>
 
         <div id="formContainer">
-            <input type="text" id="guestName" placeholder="Аты-жөніңізді жазыңыз..." required>
-
+            <input type="text" id="guestName" placeholder="Атыңызды растаңыз..." required>
             <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="Келемін" checked>
-                    Иә, міндетті түрде келемін! 🌸
-                </label>
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="Келе алмаймын">
-                    Өкінішке орай, келе алмаймын 😔
-                </label>
+                <label class="radio-label"><input type="radio" name="attendance" value="Келемін" checked> Келемін 🌸</label>
+                <label class="radio-label"><input type="radio" name="attendance" value="Келе алмаймын"> Келе алмаймын 😔</label>
             </div>
-
             <button class="btn-submit" id="submitBtn" onclick="sendData()">Жауапты жіберу 🚀</button>
         </div>
     </div>
 
     <div class="custom-modal-overlay" id="successModal">
         <div class="custom-modal-box">
-            <span class="modal-icon">🎉</span>
-            <h2 class="modal-title">Керемет!</h2>
-            <p class="modal-text">Сіздің жауабыңыз сәтті қабылданды! <br>Керемет кеште жолыққанша! ✨</p>
+            <span style="font-size: 4rem;">🎉</span>
+            <h2 class="modal-title">Рақмет!</h2>
+            <p>Жауабыңыз сәтті жіберілді. <br>Кездескенше! ✨</p>
         </div>
     </div>
 
-
     <script>
-        // Бөлшектерді жасау (оптимизацияланған, 8 дана)
-        function createParticles() {
-            const symbols = ['🌸', '🌙', '✨'];
-            const particleCount = 8;
-            for (let i = 0; i < particleCount; i++) {
-                let particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.fontSize = (Math.random() * 15 + 10) + 'px';
-                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                particle.style.animationDelay = (Math.random() * 3) + 's';
-                document.body.appendChild(particle);
-            }
-        }
-        createParticles();
+        // 1. ТІЗІМДЕГІ ҮТІРЛЕРДІ ТҮЗЕТТІК
+        const girlsCollection = {
+            "c3d4kayaulym": { name: "Аяулым", photo: "photo_2025-12-14_20-57-24.jpg" },
+            "c5d6zayaulym": { name: "Аяулым", photo: "zayaulym.jpg" },
+            "c7d8aigerim": { name: "Әйгерім", photo: "aigerim.jpg" },
+            "c9d10nazerke": { name: "Назерке", photo: "nazerke.jpg" },
+            "c11d12kamila": { name: "Камила", photo: "kamila.jpg" },
+            "c13d14aruzhan": { name: "Аружан", photo: "aruzhan.jpg" },
+            "c15d16mira": { name: "Мира", photo: "mira.jpg" },
+            "c17d18elvina": { name: "Эльвина", photo: "elvina.jpg" },
+            "c19d20tomiris": { name: "Томирис", photo: "tomiris.jpg" },
+            "c21d22kunsulu": { name: "Күнсұлу", photo: "kunsulu.jpg" }
+        };
 
+        const avatarImg = document.getElementById('girlAvatar');
+        const titleH1 = document.getElementById('title');
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
 
-        const noTexts = ["Сенімдісіз бе? 🥺", "Ауызашар ғой! 🌙", "Енді ұстап көріңіз! 🐟"];
+        const params = new URLSearchParams(window.location.search);
+        const girlId = params.get('id');
+
+        // Егер ID табылса, мәліметті ауыстырамыз
+        if (girlId && girlsCollection[girlId]) {
+            const g = girlsCollection[girlId];
+            avatarImg.src = g.photo;
+            titleH1.innerText = `Құрметті ${g.name}! 🌸`;
+            document.getElementById('guestName').value = g.name;
+        }
+
         let noClickCount = 0;
         let scaleFactor = 1;
         let isSwimming = false;
@@ -350,124 +156,68 @@
         function handleNoClick() {
             if (isSwimming) return;
             noClickCount++;
+            if (noClickCount <= 3) noBtn.innerText = ["Сенімдісіз бе?", "Ауызашар ғой!", "Ұстап көріңіз!"][noClickCount-1];
 
-            if (noClickCount <= noTexts.length) {
-                noBtn.innerText = noTexts[noClickCount - 1];
-            }
-
-            scaleFactor += 0.2;
+            scaleFactor += 0.4;
             yesBtn.style.transform = `scale(${scaleFactor})`;
 
             if (noClickCount >= 3) {
                 isSwimming = true;
                 const rect = noBtn.getBoundingClientRect();
-
                 document.body.appendChild(noBtn);
                 noBtn.style.position = 'fixed';
-                noBtn.style.margin = '0';
-                noBtn.style.left = rect.left + 'px';
-                noBtn.style.top = rect.top + 'px';
-
-                noBtn.style.transition = 'left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-
-                setTimeout(() => { swimAway(); }, 50);
+                noBtn.style.left = rect.left + 'px'; noBtn.style.top = rect.top + 'px';
+                noBtn.style.transition = 'all 0.4s ease-out';
+                setTimeout(swimAway, 100);
             }
         }
 
         function swimAway() {
             if (!isSwimming) return;
-
             const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-            const bottomSafeMargin = 120;
-            const maxY = window.innerHeight - noBtn.offsetHeight - bottomSafeMargin;
-
-            const safeMaxX = Math.max(10, maxX);
-            const safeMaxY = Math.max(10, maxY);
-
-            const randomX = Math.max(10, Math.floor(Math.random() * safeMaxX));
-            const randomY = Math.max(10, Math.floor(Math.random() * safeMaxY));
-
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            const maxY = window.innerHeight - noBtn.offsetHeight - 120;
+            noBtn.style.left = Math.max(10, Math.floor(Math.random() * maxX)) + 'px';
+            noBtn.style.top = Math.max(10, Math.floor(Math.random() * maxY)) + 'px';
         }
 
         noBtn.addEventListener('mouseover', swimAway);
-        noBtn.addEventListener('touchstart', function(e) {
-            if (isSwimming) { e.preventDefault(); swimAway(); }
-        });
+        noBtn.addEventListener('touchstart', (e) => { if(isSwimming) { e.preventDefault(); swimAway(); }});
 
         function acceptInvite() {
-            document.getElementById('mainGif').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
-            document.getElementById('title').innerHTML = "Тамаша! 🎉";
-            document.getElementById('question').innerHTML = "<b>28 ақпан</b> күні сізді асыға күтеміз. <br>Төмендегі мәліметтерді толтыруыңызды сұраймыз: ✨";
-
+            // "Иә" басқанда арудың суреті қуанышты гифке ауысады
+            document.getElementById('girlAvatar').src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
+            document.getElementById('question').innerHTML = "<b>28 ақпан</b> күні күтеміз! <br>Жауабыңызды растаңыз: ✨";
             document.querySelector('.buttons').style.display = 'none';
             if(noBtn) noBtn.style.display = 'none';
-
             document.getElementById('formContainer').style.display = 'flex';
-
             fireConfetti();
         }
 
         function sendData() {
-            const nameInput = document.getElementById('guestName');
-            const name = nameInput.value.trim();
+            const name = document.getElementById('guestName').value.trim();
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
             const submitBtn = document.getElementById('submitBtn');
-
             const myEmail = "amirzhanmeirzhan5@gmail.com";
 
-            if (name === "") {
-                nameInput.style.borderColor = "#FF512F";
-                nameInput.style.background = "rgba(255, 81, 47, 0.2)";
-                nameInput.placeholder = "Аты-жөніңізді жазыңызшы!";
-                return;
-            }
-
-            nameInput.style.borderColor = "rgba(255,255,255,0.3)";
-            nameInput.style.background = "rgba(255,255,255,0.2)";
-            submitBtn.innerText = "Жіберілуде... ⏳";
-            submitBtn.disabled = true;
+            if (!name) return alert("Атыңызды жазыңыз!");
+            submitBtn.innerText = "Жіберілуде..."; submitBtn.disabled = true;
 
             fetch(`https://formsubmit.co/ajax/${myEmail}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    "Тақырып": "8 Наурыз Ауызашар - Жаңа жауап (Космос)",
-                    "Қонақтың аты-жөні": name,
-                    "Шешімі": attendance
-                })
+                method: "POST", headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                body: JSON.stringify({"Қонақ": name, "Шешімі": attendance})
             })
-            .then(response => response.json())
-            .then(data => {
-                submitBtn.innerText = "Жіберілді ✅";
-                showSuccessModal(); // Жаңа әдемі диалогты шақырамыз
+            .then(() => {
+                document.getElementById('successModal').classList.add('active');
+                document.body.classList.add('modal-open');
             })
-            .catch(error => {
-                alert("Қате шықты. Интернет қосылымын тексеріп, қайта көріңіз.");
-                submitBtn.innerText = "Жауапты жіберу 🚀";
-                submitBtn.disabled = false;
-            });
-        }
-
-        // ЖАҢА ДИАЛОГТЫ КӨРСЕТУ ФУНКЦИЯСЫ
-        function showSuccessModal() {
-            const modal = document.getElementById('successModal');
-            modal.classList.add('active');
-            document.body.classList.add('modal-open');
-
-            fireConfetti();
+            .catch(() => { alert("Қате! Интернетті тексеріңіз."); submitBtn.disabled = false; });
         }
 
         function fireConfetti() {
-            var duration = 2 * 1000;
-            var end = Date.now() + duration;
+            const end = Date.now() + 2000;
             (function frame() {
-                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#00C9FF', '#92FE9D', '#FF512F'] });
-                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#00C9FF', '#92FE9D', '#FF512F'] });
+                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
                 if (Date.now() < end) requestAnimationFrame(frame);
             }());
         }
