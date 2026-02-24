@@ -46,7 +46,6 @@
 
         .buttons { display: flex; justify-content: center; gap: 15px; width: 100%; min-height: 60px; }
 
-        /* Батырмаларға арнайы Inter шрифті қойылды */
         button {
             padding: 14px 28px; font-size: 1.05rem; border: none; border-radius: 30px;
             cursor: pointer; font-weight: 800; text-transform: uppercase; transition: all 0.3s ease;
@@ -58,12 +57,12 @@
 
         #formContainer { display: none; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-top: 20px; }
 
-        /* Форма мәтіндеріне де Inter шрифті қойылды */
         input[type="text"] {
             width: 100%; box-sizing: border-box; padding: 16px 20px; font-size: 1.05rem;
             border-radius: 20px; border: 2px solid rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
             color: white; text-align: center; font-family: 'Inter', sans-serif; font-weight: 600;
+            transition: border-color 0.3s;
         }
         input[type="text"]::placeholder { color: rgba(255,255,255,0.8); }
 
@@ -90,7 +89,51 @@
             text-align: center; width: 320px; border: 2px solid rgba(255, 255, 255, 0.2);
         }
         .modal-title { color: #92FE9D; font-size: 1.8rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 800;}
-        .custom-modal-box p { font-family: 'Inter', sans-serif; color: #eee; }
+        .custom-modal-box p { font-family: 'Inter', sans-serif; color: #eee; margin-bottom: 20px;}
+
+        /* 2GIS БАТЫРМАСЫ ДИАЛОГТАҒЫ */
+        .location-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .location-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+
+        /* SNACKBAR (Alert-тің орнына) */
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #ff4d4d;
+            color: #fff;
+            text-align: center;
+            border-radius: 25px;
+            padding: 16px 20px;
+            position: fixed;
+            z-index: 10000;
+            left: 50%;
+            bottom: -50px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        #snackbar.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -124,9 +167,12 @@
         <div class="custom-modal-box">
             <span style="font-size: 4rem;">🎉</span>
             <h2 class="modal-title">Рақмет!</h2>
-            <p>Жауабыңыз сәтті жіберілді. <br>Кездескенше! ✨</p>
+            <p>Жауабыңыз сәтті жіберілді. <br>Керемет кеште жолыққанша! ✨</p>
+            <a href="https://2gis.kz/almaty/geo/70030076202122751" target="_blank" class="location-btn">📍 Мекенжайды ашу (2GIS)</a>
         </div>
     </div>
+
+    <div id="snackbar">Хабарлама</div>
 
     <script>
         const girlsCollection = {
@@ -163,6 +209,17 @@
         let scaleFactor = 1;
         let isSwimming = false;
 
+        // SNACKBAR КӨРСЕТУ ФУНКЦИЯСЫ
+        function showSnackbar(message, isError = true) {
+            const snackbar = document.getElementById("snackbar");
+            snackbar.innerText = message;
+            snackbar.style.backgroundColor = isError ? "#ff4d4d" : "#92FE9D"; // Қате болса қызыл, сәтті болса жасыл
+            snackbar.style.color = isError ? "#fff" : "#000";
+
+            snackbar.classList.add("show");
+            setTimeout(function(){ snackbar.classList.remove("show"); }, 3000);
+        }
+
         function handleNoClick() {
             if (isSwimming) return;
             noClickCount++;
@@ -198,7 +255,13 @@
                 avatarImg.src = "https://media.tenor.com/97mG3d-U2r8AAAAi/tkthao219-bubududu.gif";
             }
 
-            document.getElementById('question').innerHTML = "<b>28 ақпан</b> күні күтеміз! <br>Жауабыңызды растаңыз: ✨";
+            // МӘТІНГЕ 2GIS СІЛТЕМЕСІ ҚОСЫЛДЫ
+            document.getElementById('question').innerHTML = `
+                <b>28 ақпан</b> күні асыға күтеміз! <br><br>
+                📍 <b>Мекенжай:</b> <a href="https://2gis.kz/almaty/geo/70030076202122751" target="_blank" style="color: #92FE9D; text-decoration: none; border-bottom: 1px dashed #92FE9D;">Картадан ашу</a> <br><br>
+                Төмендегі жауапты растаңыз: ✨
+            `;
+
             document.querySelector('.buttons').style.display = 'none';
             if(noBtn) noBtn.style.display = 'none';
             document.getElementById('formContainer').style.display = 'flex';
@@ -206,12 +269,19 @@
         }
 
         function sendData() {
-            const name = document.getElementById('guestName').value.trim();
+            const nameInput = document.getElementById('guestName');
+            const name = nameInput.value.trim();
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
             const submitBtn = document.getElementById('submitBtn');
             const myEmail = "amirzhanmeirzhan5@gmail.com";
 
-            if (!name) return alert("Атыңызды жазыңыз!");
+            if (!name) {
+                nameInput.style.borderColor = "#ff4d4d"; // Қате болса input қызарады
+                showSnackbar("Өтініш, атыңызды жазыңыз! 🌸", true); // Alert орнына Snackbar
+                return;
+            }
+
+            nameInput.style.borderColor = "rgba(255,255,255,0.3)";
             submitBtn.innerText = "Жіберілуде..."; submitBtn.disabled = true;
 
             fetch(`https://formsubmit.co/ajax/${myEmail}`, {
@@ -222,7 +292,11 @@
                 document.getElementById('successModal').classList.add('active');
                 document.body.classList.add('modal-open');
             })
-            .catch(() => { alert("Қате! Интернетті тексеріңіз."); submitBtn.disabled = false; });
+            .catch(() => {
+                showSnackbar("Қате! Интернетті тексеріп қайта көріңіз. 😔", true);
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Жауапты жіберу 🚀";
+            });
         }
 
         function fireConfetti() {
